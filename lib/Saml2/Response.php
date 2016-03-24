@@ -42,7 +42,7 @@ class OneLogin_Saml2_Response
     * After validation, if it fail this var has the cause of the problem
     * @var string
     */
-    private $_error;
+    protected $_error;
 
     /**
      * Constructs the SAML Response object.
@@ -91,7 +91,7 @@ class OneLogin_Saml2_Response
 
             $singleAssertion = $this->validateNumAssertions();
             if (!$singleAssertion) {
-                throw new Exception('SAML Response must contain 1 assertion');
+                //throw new Exception('SAML Response must contain 1 assertion');
             }
 
             $status = $this->checkStatus();
@@ -510,7 +510,7 @@ class OneLogin_Saml2_Response
      * @throws Exception
      * @return DOMNodeList The queried node
      */
-    private function _queryAssertion($assertionXpath)
+    protected function _queryAssertion($assertionXpath)
     {
         if ($this->encrypted) {
             $xpath = new DOMXPath($this->decryptedDocument);
@@ -565,7 +565,7 @@ class OneLogin_Saml2_Response
      * @throws Exception
      * @return DOMDocument Decrypted Assertion
      */
-    private function _decryptAssertion($dom)
+    protected function _decryptAssertion($dom)
     {
         $pem = $this->_settings->getSPkey();
 

@@ -29,7 +29,7 @@ class OneLogin_Saml2_LogoutResponse
     * After execute a validation process, this var contains the cause
     * @var string
     */
-    private $_error;
+    protected $_error;
 
     /**
      * Constructs a Logout Response object (Initialize params from settings and if provided

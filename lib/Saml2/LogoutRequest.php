@@ -16,13 +16,13 @@ class OneLogin_Saml2_LogoutRequest
      * SAML Logout Request
      * @var string
      */
-    private $_logoutRequest;
+    protected $_logoutRequest;
 
     /**
     * After execute a validation process, this var contains the cause
     * @var string
     */
-    private $_error;
+    protected $_error;
 
     /**
      * Constructs the Logout Request object.
@@ -95,7 +95,7 @@ LOGOUTREQUEST;
      *
      * @return string ID
      */
-    public static function getID($request)
+    public static function getIDHelper($request)
     {
         if ($request instanceof DOMDocument) {
             $dom = $request;
@@ -170,7 +170,7 @@ LOGOUTREQUEST;
      *
      * @return string Name ID Value
      */
-    public static function getNameId($request, $key = null)
+    public static function getNameIdHelper($request, $key = null)
     {
         $nameId = self::getNameIdData($request, $key);
         return $nameId['Value'];
@@ -207,7 +207,7 @@ LOGOUTREQUEST;
      * 
      * @return array The SessionIndex value
      */
-    public static function getSessionIndexes($request)
+    public static function getSessionIndexesHelper($request)
     {
         if ($request instanceof DOMDocument) {
             $dom = $request;
